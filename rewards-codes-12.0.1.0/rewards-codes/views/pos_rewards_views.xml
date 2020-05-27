@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<odoo>
+
+        <template id="assets" inherit_id="point_of_sale.assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/rewards-codes/static/src/js/custom.js"></script>
+            </xpath>
+        </template>
+
+
+        <!--     RWC CONFIGURATION  -->
+
+        <record id="view_rwc_config_form" model="ir.ui.view">
+            <field name="name">RwC Configuration form</field>
+            <field name="model">rewardscodes.config</field>
+            <field name="arch" type="xml">
+                <form string="RwC Configuration">
+                    <sheet>
+                        <group col="4">
+                            <field name="phone" />
+                            <field name="api_key" />
+                            <field name="code" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_rwc_config_tree" model="ir.ui.view">
+            <field name="name">RwC Configuration tree</field>
+            <field name="model">rewardscodes.config</field>
+            <field name="arch" type="xml">
+                <tree string="RwC Configurations">
+                    <field name="phone" />
+                    <field name="api_key" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_rwc_config_form" model="ir.actions.act_window">
+            <field name="name">RwC Configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">rewardscodes.config</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Add a new RwC configuration
+              </p><p>
+                A Rewards Codes configurations allows you to reward your customers.
+              </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_rwc_config"
+             parent="point_of_sale.menu_point_config_product"
+             action="action_rwc_config_form"
+             sequence="10"/>
+
+
+</odoo>
